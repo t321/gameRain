@@ -7,9 +7,18 @@ public class Sprite {
 	public int[] pixels;
 	private SpriteSheet sheet;
 
-	public static Sprite grass = new Sprite(16, 0, 0, SpriteSheet.tiles);
+	//Sprite void
 	public static Sprite voidSprite = new Sprite(16, 0x1B87E0);
+	//Sprite color green no blue for example
+//	public static Sprite voidSprite = new Sprite(16, 0x12b32d);
 
+	
+	//Sprite for rock, flower, grass, etc
+	public static Sprite grass = new Sprite(16, 0, 0, SpriteSheet.tiles);
+	public static Sprite flower = new Sprite(16, 1, 0, SpriteSheet.tiles);
+	public static Sprite rock = new Sprite(16, 2, 0, SpriteSheet.tiles);
+
+	//Sprite for player
 	// x=0 y=5 because you select a square 32x32
 	public static Sprite player_foward = new Sprite(32, 0, 5, SpriteSheet.tiles);
 	public static Sprite player_foward_1 = new Sprite(32, 0, 6, SpriteSheet.tiles);
