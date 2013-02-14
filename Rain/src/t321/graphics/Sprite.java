@@ -9,16 +9,20 @@ public class Sprite {
 
 	public static Sprite grass = new Sprite(16, 0, 0, SpriteSheet.tiles);
 	public static Sprite voidSprite = new Sprite(16, 0x1B87E0);
-	
-	public static Sprite player0 = new Sprite(16, 0, 10, SpriteSheet.tiles);
-	public static Sprite player1 = new Sprite(16, 1, 10, SpriteSheet.tiles);
-	public static Sprite player2 = new Sprite(16, 0, 11, SpriteSheet.tiles);
-	public static Sprite player3 = new Sprite(16, 1, 11, SpriteSheet.tiles);
 
-	//x=0 y=5 because you select a square 32x32
-	public static Sprite player = new Sprite(32,0 , 5, SpriteSheet.tiles);
+	// x=0 y=5 because you select a square 32x32
+	public static Sprite player_foward = new Sprite(32, 0, 5, SpriteSheet.tiles);
+	public static Sprite player_foward_1 = new Sprite(32, 0, 6, SpriteSheet.tiles);
+	public static Sprite player_foward_2 = new Sprite(32, 0, 7, SpriteSheet.tiles);
 	
+	public static Sprite player_back = new Sprite(32, 2, 5, SpriteSheet.tiles);
+	public static Sprite player_back_1 = new Sprite(32, 2, 6, SpriteSheet.tiles);
+	public static Sprite player_back_2 = new Sprite(32, 2, 7, SpriteSheet.tiles);
 	
+	public static Sprite player_side = new Sprite(32, 1, 5, SpriteSheet.tiles);
+	public static Sprite player_side_1 = new Sprite(32, 1, 6, SpriteSheet.tiles);
+	public static Sprite player_side_2 = new Sprite(32, 1, 7, SpriteSheet.tiles);
+
 	public Sprite(int size, int x, int y, SpriteSheet sheet) {
 		this.SIZE = size;
 		this.pixels = new int[SIZE * SIZE];
@@ -29,13 +33,12 @@ public class Sprite {
 
 	}
 
-	public Sprite(int size, int colour)
-	{
+	public Sprite(int size, int colour) {
 		this.SIZE = size;
-		this.pixels = new int[this.SIZE*this.SIZE];
+		this.pixels = new int[this.SIZE * this.SIZE];
 		setColour(colour);
 	}
-	
+
 	private void setColour(int colour) {
 		for (int i = 0; i < pixels.length; i++) {
 			pixels[i] = colour;
