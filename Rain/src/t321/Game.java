@@ -16,6 +16,7 @@ import t321.graphics.Screen;
 import t321.input.Keyboard;
 import t321.level.Level;
 import t321.level.RandomLevel;
+import t321.level.SpawnLevel;
 
 public class Game extends Canvas implements Runnable {
 	private static final long serialVersionUID = 1L;
@@ -44,8 +45,8 @@ public class Game extends Canvas implements Runnable {
 		screen = new Screen(width, height);
 		frame = new JFrame();
 		key = new Keyboard();
-		level = new RandomLevel(64, 64);
-		player = new Player(key);
+		level = new SpawnLevel("/textures/level.png");
+		player = new Player(30, 30, key);
 
 		addKeyListener(key);
 	}
@@ -109,6 +110,7 @@ public class Game extends Canvas implements Runnable {
 		// if (key.right) x++;
 		// if (key.left) x--;
 		player.update();
+
 	}
 
 	public void render() {
@@ -142,6 +144,7 @@ public class Game extends Canvas implements Runnable {
 
 	public static void main(String[] args) {
 		Game game = new Game();
+		game = new Game();
 		game.frame.setResizable(false);
 		game.frame.setTitle(title);
 		game.frame.add(game);

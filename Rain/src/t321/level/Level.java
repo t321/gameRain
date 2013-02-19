@@ -7,17 +7,19 @@ public class Level {
 
 	protected int width;
 	protected int height;
+	protected int[] tilesInt;
 	protected int[] tiles;
 
 	public Level(int width, int height) {
 		this.width = width;
 		this.height = height;
-		this.tiles = new int[width * height];
+		this.tilesInt = new int[width * height];
 		generateLevel();
 	}
 
 	public Level(String path) {
 		loadLevel(path);
+		generateLevel();
 	}
 
 	protected void generateLevel() {
@@ -44,16 +46,25 @@ public class Level {
 		for (int y = y0; y < y1; y++) {
 			for (int x = x0; x < x1; x++) {
 				getTile(x, y).render(x, y, screen);
+				// 256 = 16 * 16
+				// if (x + y * 16 < 0 || x + y * 16 >= 256) {
+				// Tile.voidTile.render(x, y, screen);
+				// // continue;
+				// } else {
+				// tiles[x + y * 16].render(x, y, screen);
+				// }
 			}
 		}
 	}
 
+	// Grass = 0xFF00FF00;
+	// Flower = 0xFFFFFF00
+	// Rock = 0xFF7F7F00
 	public Tile getTile(int x, int y) {
-
 		if (x < 0 || y < 0 || x >= width || y >= height) return Tile.voidTile;
-		if (tiles[x + y * width] == 0) return Tile.grass;
-		if (tiles[x + y * width] == 1) return Tile.flower;
-		if (tiles[x + y * width] == 2) return Tile.rock;
+		if (tiles[x + y * width] == 0xFF00FF00) return Tile.grass;
+		if (tiles[x + y * width] == 0xFFFFFF00) return Tile.flower;
+		if (tiles[x + y * width] == 0xFF7F7F00) return Tile.rock;
 		return Tile.voidTile;
 	}
 
